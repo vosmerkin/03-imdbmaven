@@ -1,3 +1,5 @@
+package Imdb;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -24,7 +26,7 @@ public class ImportExport {
         return list;
     }
 
-    void exportToFile(String filename, List<User> list) {
+    public void exportToFile(String filename, List<User> list) {
         try (PrintWriter out = new PrintWriter(new File(filename).getAbsoluteFile())) {
             for (User user : list) {
                 out.println(user.toString());

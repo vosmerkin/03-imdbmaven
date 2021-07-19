@@ -1,5 +1,7 @@
+import Imdb.Imdb;
 import java.time.LocalDate;
 import java.util.Scanner;
+import Imdb.*;
 
 public class Menu {
 
@@ -64,7 +66,7 @@ public class Menu {
 
     }
 
-//    private void editEntry(Imdb imdb) {
+//    private void editEntry(Imdb.Imdb imdb) {
 //        System.out.println("Enter index of the user entry to edit, or use search to find it (type _7):");
 //        String userIndex = scanner.next();
 //        String userConfirmation;
@@ -72,7 +74,7 @@ public class Menu {
 //        else {
 //            int userIndex1 = Integer.parseInt(userIndex);
 //            if ((userIndex1 > 0) & (userIndex1 <= imdb.db.size())){
-//                System.out.println("User index - " + userIndex1);
+//                System.out.println("Imdb.User index - " + userIndex1);
 //                System.out.println(imdb.db.get(userIndex1).toString());
 //            }
 //        }
@@ -86,7 +88,7 @@ public class Menu {
         else {
             int userIndex1 = Integer.parseInt(userIndex);
             if ((userIndex1 > 0) & (userIndex1 <= imdb.db.size())) {
-                System.out.println("User index - " + userIndex1);
+                System.out.println("Imdb.User index - " + userIndex1);
                 System.out.println(imdb.db.get(userIndex1).toString());
                 System.out.println("Remove this user? (Type 1 to confirm):");
 
@@ -98,8 +100,8 @@ public class Menu {
 
     }
 
-//    class searchUserComp implements Comparator<User> {
-//        @Override public int compare(User s1, User s2)
+//    class searchUserComp implements Comparator<Imdb.User> {
+//        @Override public int compare(Imdb.User s1, Imdb.User s2)
 //        {
 //            if (s1.getSid() == s2.getSid()) {
 //                return 0;

@@ -1,7 +1,7 @@
+package Imdb;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -25,7 +25,7 @@ public class Imdb {
 //        Collections.sort(db);
 //        int index =0;
 //
-//        index = Collections.binarySearch(db, new User(searchString, searchString, birthday, new Address(searchString, searchString, app)));
+//        index = Collections.binarySearch(db, new Imdb.User(searchString, searchString, birthday, new Imdb.Imdb.Address(searchString, searchString, app)));
 
 
         for (User user : db)

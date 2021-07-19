@@ -1,3 +1,5 @@
+package Imdb;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -71,9 +73,9 @@ public class User implements Comparable <User>{
 //    @Override
 //    public boolean equals(Object o) {
 //        boolean retVal = false;
-//        if (o instanceof User) {
-//            User user = new User();
-//            user = (User) o;
+//        if (o instanceof Imdb.User) {
+//            Imdb.User user = new Imdb.User();
+//            user = (Imdb.User) o;
 //            retVal = (user.name.contains(this.name) | user.surname.contains(this.name) | user.address.equals(this.address));
 //        }
 //        return retVal;
