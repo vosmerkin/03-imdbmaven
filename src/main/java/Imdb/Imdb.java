@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+//TODO find more effective data structure
+//todo interface for imdb
+
+//todo package imdb
+//todo поиск по конкретным полям
+
+
 public class Imdb {
     public List<User> db = new ArrayList<User>();
 
@@ -29,9 +36,7 @@ public class Imdb {
 
 
         for (User user : db)
-            if (searchString != "") {
-
-
+            if ( !searchString.equals("")) {
                 if ((user.name.contains(searchString))
                         | (user.surname.contains(searchString))
                         | (user.address.city.contains(searchString))
@@ -43,7 +48,7 @@ public class Imdb {
                 if (user.birthday.equals(birthday)) System.out.println(db.indexOf(user) + " " + user.toString());
             }
 
-        // return searchResults;
+
     }
 
     public void delete(int userIndex) {
