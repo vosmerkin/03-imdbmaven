@@ -1,4 +1,3 @@
-import Imdb.Imdb;
 import java.time.LocalDate;
 import java.util.Scanner;
 import Imdb.*;
@@ -118,10 +117,13 @@ public class Menu {
 
 
     public void search(Imdb imdb) {
-        System.out.println("Enter search string:");
-        String searchString = scanner.next();
-        //int[] searchResults;
-        imdb.searchUsers(searchString,LocalDate.of(1, 1, 1) );
+
+        imdb.searchUsersStream(this.inputUserData("Enter user search parameters"));
+//
+//        System.out.println("Enter search string:");
+//        String searchString = scanner.next();
+//        //int[] searchResults;
+//        imdb.searchUsers(searchString,LocalDate.of(1, 1, 1) );
     }
 
     public Integer mainMenu() {
@@ -129,23 +131,21 @@ public class Menu {
         System.out.println("2 - Delete entry");
         //System.out.println("3 - Edit entry");
         System.out.println("4 - Search by name or address");
-        System.out.println("5 - Search by age");
+        //System.out.println("5 - Search by age");
         System.out.println("6 - Show db on the screen");
         System.out.println("7 - Import from file");
         System.out.println("8 - Export to file");
         System.out.println("9 - Quit");
-
-        //        scanner.close();
         return scanner.nextInt();
     }
 
-    public void addEntry(Imdb imdb) {
-//        Scanner scanner = new Scanner(System.in);
-        System.out.println("Adding new entry");
-        System.out.println("Enter new user name:");
+    public User inputUserData(String prompt){
+        System.out.println(prompt);
+
+        System.out.println("Enter user name:");
         String name = scanner.next();
 
-        System.out.println("Enter new user surname:");
+        System.out.println("Enter user surname:");
         String surname = scanner.next();
 
         System.out.println("Enter user birthdate");
@@ -162,12 +162,13 @@ public class Menu {
         String city = scanner.next();
         System.out.println("Street:");
         String street = scanner.next();
-//        scanner.close();
         System.out.println("App:");
         int app = scanner.nextInt();
+        return new User(name, surname, birthday, new Address(city, street, app));
+    }
 
-        imdb.addEntry(new User(name, surname, birthday, new Address(city, street, app)));
-
+    public void addEntry(Imdb imdb) {
+        imdb.addEntry(this.inputUserData("Adding new entry"));
     }
 
 }

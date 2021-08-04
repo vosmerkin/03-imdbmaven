@@ -61,6 +61,7 @@ public class User implements Comparable <User>{
         this.address.setApp(app);
     }
 
+
     public String toString() {
         return name + ":" + surname + ":" + birthday.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) + ":" + address.toString();
     }
@@ -70,17 +71,18 @@ public class User implements Comparable <User>{
         return this.toString().compareTo(o.toString());
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        boolean retVal = false;
-//        if (o instanceof Imdb.User) {
-//            Imdb.User user = new Imdb.User();
-//            user = (Imdb.User) o;
-//            retVal = (user.name.contains(this.name) | user.surname.contains(this.name) | user.address.equals(this.address));
-//        }
-//        return retVal;
-//    }
-//
+
+    public boolean equals_search(Object o) {
+        boolean retVal = false;
+        if (o instanceof User) {
+            User user = new User();
+            user = (User) o;
+            retVal = (user.name.equals(this.name) || user.surname.equals(this.name) || user.birthday.toString().equals(this.birthday.toString()) || user.address.equals_search(this.address));
+        }
+        return retVal;
+    }
+
+
 //    @Override
 //    public int hashCode() {
 //        int hash = 7;

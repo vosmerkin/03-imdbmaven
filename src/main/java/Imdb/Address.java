@@ -47,17 +47,17 @@ public class Address {
         return city + ":" + street + ":" + app.toString();
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        boolean retVal = false;
-//        if (o instanceof Imdb.Imdb.Address) {
-//            Imdb.Imdb.Address address = new Imdb.Imdb.Address();
-//            address = (Imdb.Imdb.Address) o;
-//            retVal = (address.city.equals(this.city) | address.street.equals(this.street) | address.app.equals(this.app));
-//        }
-//        return retVal;
-//    }
-//
+
+    public boolean equals_search(Object o) {
+        boolean retVal = false;
+        if (o instanceof Address) {
+            Address address = new Address();
+            address = (Address) o;
+            retVal = (address.city.equals(this.city) && address.street.equals(this.street) && address.app.equals(this.app));
+        }
+        return retVal;
+    }
+
 //    @Override
 //    public int hashCode() {
 //        int hash = 7;
