@@ -2,6 +2,7 @@ package Imdb;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 
 public class User implements Comparable <User>{
@@ -77,7 +78,7 @@ public class User implements Comparable <User>{
         if (o instanceof User) {
             User user = new User();
             user = (User) o;
-            retVal = (user.name.equals(this.name) || user.surname.equals(this.name) || user.birthday.toString().equals(this.birthday.toString()) || user.address.equals_search(this.address));
+            retVal = (user.name.toLowerCase().equals(this.name.toLowerCase()) || user.surname.toLowerCase().equals(this.name.toLowerCase()) || user.birthday.toString().toLowerCase().equals(this.birthday.toString().toLowerCase()) || user.address.equals_search(this.address));
         }
         return retVal;
     }

@@ -136,34 +136,59 @@ public class Menu {
         System.out.println("7 - Import from file");
         System.out.println("8 - Export to file");
         System.out.println("9 - Quit");
-        return scanner.nextInt();
+        int i=scanner.nextInt();
+        String s= scanner.nextLine();
+        return i;
     }
+
+
+    public int inputInt(String prompt, int maxVal, int minVal, int emptyInputVal){
+        System.out.println(prompt);
+        String str=scanner.nextLine();
+        int returnVal=emptyInputVal;
+        try {
+            returnVal = Integer.parseInt(str);
+            if (minVal > returnVal) {
+                System.out.println("Input out of bounds. Value " + minVal + " is used");
+                returnVal = minVal;
+            }
+            if (maxVal < returnVal) {
+                System.out.println("Input out of bounds. Value " + maxVal + " is used");
+                returnVal = maxVal;
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            returnVal = emptyInputVal;
+        }
+
+
+        return returnVal;
+    }
+
+    public String inputStr(String prompt){
+        System.out.println(prompt);
+        String str=scanner.nextLine();
+        return str;
+    }
+
 
     public User inputUserData(String prompt){
         System.out.println(prompt);
 
-        System.out.println("Enter user name:");
-        String name = scanner.next();
-
-        System.out.println("Enter user surname:");
-        String surname = scanner.next();
+        String name = inputStr("Enter user name:");
+        String surname =  inputStr("Enter user surname:");
 
         System.out.println("Enter user birthdate");
-        System.out.println("Year (1900...2021):");
-        int year = scanner.nextInt();
-        System.out.println("Month(1...12):");
-        int month = scanner.nextInt();
-        System.out.println("Day(1...31):");
-        int day = scanner.nextInt();
+        int year = inputInt("Year (1900...2021):",2021,1900,5000);
+        int month = inputInt("Month(1...12):",12,1,1);
+        int day = inputInt("Day(1...31):",30,1,1);
         LocalDate birthday = LocalDate.of(year, month, day);
 
         System.out.println("Enter user address");
-        System.out.println("City:");
-        String city = scanner.next();
-        System.out.println("Street:");
-        String street = scanner.next();
-        System.out.println("App:");
-        int app = scanner.nextInt();
+        String city = inputStr("City:");
+        String street = inputStr("Street:");
+        int app = inputInt("App:",10000000,1,1);
         return new User(name, surname, birthday, new Address(city, street, app));
     }
 
