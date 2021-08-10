@@ -7,7 +7,7 @@ public class Menu {
     Scanner scanner = new Scanner(System.in);
 
     public void start() {
-        Imdb imdb = new Imdb();
+        UsersImdb imdb = new UsersImdb();
 
         Integer menuItem;
         do {
@@ -53,7 +53,7 @@ public class Menu {
         while (menuItem != 9);
     }
 
-    private void searchAge(Imdb imdb) {
+    private void searchAge(UsersImdb imdb) {
         System.out.println("Enter searched date of birth:");
         System.out.println("Year:");
         int searchYear = scanner.nextInt();
@@ -79,7 +79,7 @@ public class Menu {
 //        }
 //    }
 
-    private void delete(Imdb imdb) {
+    private void delete(UsersImdb imdb) {
         System.out.println("Enter index of the user entry to delete, or use search to find it (type _7):");
         String userIndex = scanner.next();
         String userConfirmation;
@@ -116,7 +116,7 @@ public class Menu {
 //    }
 
 
-    public void search(Imdb imdb) {
+    public void search(UsersImdb imdb) {
 
         imdb.searchUsersStream(this.inputUserData("Enter user search parameters"));
 //
@@ -192,7 +192,7 @@ public class Menu {
         return new User(name, surname, birthday, new Address(city, street, app));
     }
 
-    public void addEntry(Imdb imdb) {
+    public void addEntry(UsersImdb imdb) {
         imdb.addEntry(this.inputUserData("Adding new entry"));
     }
 
