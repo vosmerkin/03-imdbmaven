@@ -2,7 +2,6 @@ package Imdb;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 
 public class User implements Comparable <User>{
@@ -21,12 +20,7 @@ public class User implements Comparable <User>{
         this.address = address;
     }
 
-    public User() {
-        String name;
-        String surname;
-        LocalDate birthday;
-        Address address;
-    }
+    public User() {    }
 
     public String getName() {
         return name;
@@ -60,6 +54,21 @@ public class User implements Comparable <User>{
         this.address.setCity(city);
         this.address.setStreet(street);
         this.address.setApp(app);
+    }
+    public String getProperty(String propertyName){
+        String propertyValue="";
+        switch (propertyName){
+            case "name":{
+                propertyValue=name;
+            }
+            case "surname":{
+                propertyValue=surname;
+            }
+            case "birthday":{
+                propertyValue=birthday.toString();
+            }
+        }
+        return propertyValue;
     }
 
 

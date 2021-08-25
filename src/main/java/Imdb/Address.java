@@ -53,7 +53,7 @@ public class Address {
         if (o instanceof Address) {
             Address address = new Address();
             address = (Address) o;
-            retVal = (address.city.toLowerCase().equals(this.city.toLowerCase()) && address.street.toLowerCase().equals(this.street.toLowerCase()) && address.app.equals(this.app));
+            retVal = (address.city.toLowerCase().equals(city.toLowerCase()) && address.street.toLowerCase().equals(street.toLowerCase()) && address.app.equals(this.app));
         }
         return retVal;
     }

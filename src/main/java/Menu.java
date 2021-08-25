@@ -16,23 +16,26 @@ public class Menu {
 
             switch (menuItem) {
                 case (1): //1 - Add entry
-                    this.addEntry(imdb);
+                    addEntry(imdb);
+
+                    //TODO delete this
 
                     break;
                 case (2): //2 - Delete entry
-                    this.delete(imdb);
+                    delete(imdb);
                     break;
-                case (3): //3 - Edit entry
-//                    System.out.println("Not yet");
+                case (3): //3 - Search by name
+                    searchWithMap(imdb, "name");
 //                    this.editEntry(imdb);
                     break;
-                case (4): //4 - Search by name
-                    this.search(imdb);
-
+                case (4): //4 - Search by surname
+//                    this.search(imdb);
+                    searchWithMap(imdb, "surname");
                     break;
 
                 case (5): //5 - Search by age
-                    this.searchAge(imdb);
+                    searchWithMap(imdb, "birthday");
+//                    this.searchAge(imdb);
                     break;
 
                 case (6): //6 - Show db on the screen
@@ -40,6 +43,9 @@ public class Menu {
                     break;
                 case (7): //7 - Import from file
                     imdb.db = io.importFromFile("./" + "imdb.txt");
+                    imdb.dbNames = io.getMapByProperty(imdb.db, "name");
+                    imdb.dbSurnames = io.getMapByProperty(imdb.db, "surname");
+                    imdb.dbBirthdays = io.getMapByProperty(imdb.db, "birthday");
                     break;
                 case (8): //8 - Export to file
                     io.exportToFile("./" + "imdb.txt", imdb.db);
@@ -53,16 +59,31 @@ public class Menu {
         while (menuItem != 9);
     }
 
-    private void searchAge(UsersImdb imdb) {
-        System.out.println("Enter searched date of birth:");
-        System.out.println("Year:");
-        int searchYear = scanner.nextInt();
-        System.out.println("Month:");
-        int searchMonth = scanner.nextInt();
-        System.out.println("Day:");
-        int searchDay = scanner.nextInt();
-        imdb.searchUsers("", LocalDate.of(searchYear, searchMonth, searchDay));
+//    private void searchAge(UsersImdb imdb) {
+//        System.out.println("Enter searched date of birth:");
+//        System.out.println("Year:");
+//        int searchYear = scanner.nextInt();
+//        System.out.println("Month:");
+//        int searchMonth = scanner.nextInt();
+//        System.out.println("Day:");
+//        int searchDay = scanner.nextInt();
+//        imdb.searchUsers("", LocalDate.of(searchYear, searchMonth, searchDay));
+//
+//    }
 
+    private void searchWithMap(UsersImdb imdb, String searchParameter) {
+        String searchString = inputStr("Enter user " + searchParameter + ":");
+        switch (searchParameter) {
+            case "name": {
+                imdb.searchUsersMap(imdb.dbNames,searchString);
+            }
+            case "surname":{
+                imdb.searchUsersMap(imdb.dbSurnames,searchString);
+            }
+            case "birthday":{
+                imdb.searchUsersMap(imdb.dbBirthdays,searchString);
+            }
+        }
     }
 
 //    private void editEntry(Imdb.Imdb imdb) {
@@ -83,10 +104,16 @@ public class Menu {
         System.out.println("Enter index of the user entry to delete, or use search to find it (type _7):");
         String userIndex = scanner.next();
         String userConfirmation;
-        if (userIndex.equals("_7")) this.search(imdb);
+        if ("_7".equals(userIndex)) this.search(imdb);
+
+        //TODO userIndex.equals("_7")
+
         else {
             int userIndex1 = Integer.parseInt(userIndex);
-            if ((userIndex1 > 0) & (userIndex1 <= imdb.db.size())) {
+            if ((userIndex1 > 0) && (userIndex1 <= imdb.db.size())) {
+
+                //TODO &&
+
                 System.out.println("Imdb.User index - " + userIndex1);
                 System.out.println(imdb.db.get(userIndex1).toString());
                 System.out.println("Remove this user? (Type 1 to confirm):");
@@ -129,9 +156,9 @@ public class Menu {
     public Integer mainMenu() {
         System.out.println("1 - Add entry");
         System.out.println("2 - Delete entry");
-        //System.out.println("3 - Edit entry");
-        System.out.println("4 - Search by name or address");
-        //System.out.println("5 - Search by age");
+        System.out.println("3 - Search by name");
+        System.out.println("4 - Search by surname");
+        System.out.println("5 - Search by age");
         System.out.println("6 - Show db on the screen");
         System.out.println("7 - Import from file");
         System.out.println("8 - Export to file");
@@ -148,28 +175,25 @@ public class Menu {
         int returnVal=emptyInputVal;
         try {
             returnVal = Integer.parseInt(str);
-            if (minVal > returnVal) {
-                System.out.println("Input out of bounds. Value " + minVal + " is used");
-                returnVal = minVal;
-            }
-            if (maxVal < returnVal) {
-                System.out.println("Input out of bounds. Value " + maxVal + " is used");
-                returnVal = maxVal;
-            }
         }
         catch (NumberFormatException e)
         {
-            returnVal = emptyInputVal;
+            System.out.println(e);
         }
-
-
+        if (minVal > returnVal) {
+            System.out.println("Input out of bounds. Value " + minVal + " is used");
+            returnVal = minVal;
+        }
+        if (maxVal < returnVal) {
+            System.out.println("Input out of bounds. Value " + maxVal + " is used");
+            returnVal = maxVal;
+        }
         return returnVal;
     }
 
     public String inputStr(String prompt){
         System.out.println(prompt);
-        String str=scanner.nextLine();
-        return str;
+        return scanner.nextLine();
     }
 
 
