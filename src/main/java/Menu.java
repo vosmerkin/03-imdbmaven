@@ -72,16 +72,21 @@ public class Menu {
 //    }
 
     private void searchWithMap(UsersImdb imdb, String searchParameter) {
-        String searchString = inputStr("Enter user " + searchParameter + ":");
         switch (searchParameter) {
             case "name": {
+                String searchString = inputStr("Enter user name:");
                 imdb.searchUsersMap(imdb.dbNames,searchString);
+                break;
             }
             case "surname":{
+                String searchString = inputStr("Enter user surname:");
                 imdb.searchUsersMap(imdb.dbSurnames,searchString);
+                break;
             }
             case "birthday":{
+                String searchString = inputStr("Enter user birthday (YYYY-MM-DD):");
                 imdb.searchUsersMap(imdb.dbBirthdays,searchString);
+                break;
             }
         }
     }

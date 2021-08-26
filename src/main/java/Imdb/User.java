@@ -60,12 +60,15 @@ public class User implements Comparable <User>{
         switch (propertyName){
             case "name":{
                 propertyValue=name;
+                break;
             }
             case "surname":{
                 propertyValue=surname;
+                break;
             }
             case "birthday":{
                 propertyValue=birthday.toString();
+                break;
             }
         }
         return propertyValue;

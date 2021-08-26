@@ -12,7 +12,7 @@ import java.util.*;
 //todo поиск по конкретным полям
 
 
-public class UsersImdb implements  Imdb{
+public class UsersImdb implements Imdb{
 
     public List<User> db = new ArrayList<>();
     public Map<String, List<User>> dbNames = new  HashMap<>();
@@ -25,7 +25,11 @@ public class UsersImdb implements  Imdb{
     }
 
     public void searchUsersMap (Map<String, List<User>> dbMap, String searchString) {
-        System.out.println(dbMap.get(searchString));
+        List <User> db = dbMap.get(searchString);
+        for (User user: db) {
+            System.out.println(user);
+        }
+
     }
 
 

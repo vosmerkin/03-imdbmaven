@@ -53,11 +53,14 @@ public class ImportExport {
         Map<String, List<User>> mp = new HashMap<>();
         String s1;
         for (User user : list) {
-            if (mp.isEmpty()) {
-                mp.put(user.getProperty(propertyName), new ArrayList<User>());
+            s1 = user.getProperty(propertyName);
+
+            if (mp.containsKey(s1)) {
+                mp.get(s1).add(user);
+            } else {
+                mp.put(s1, new ArrayList<>());
+                mp.get(s1).add(user);
             }
-            s1=user.getProperty(propertyName);
-            mp.get(s1).add(user);
         }
         return mp;
     }
