@@ -4,13 +4,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-public class User implements Comparable <User>{
+public class User implements Comparable<User> {
     String name;
-
     String surname;
-
     LocalDate birthday;
-
     Address address;
 
     public User(String name, String surname, LocalDate birthday, Address address) {
@@ -20,7 +17,8 @@ public class User implements Comparable <User>{
         this.address = address;
     }
 
-    public User() {    }
+    public User() {
+    }
 
     public String getName() {
         return name;
@@ -51,23 +49,24 @@ public class User implements Comparable <User>{
     }
 
     public void setAddress(String city, String street, int app) {
-        this.address.setCity(city);
-        this.address.setStreet(street);
-        this.address.setApp(app);
+        address.setCity(city);
+        address.setStreet(street);
+        address.setApp(app);
     }
-    public String getProperty(String propertyName){
-        String propertyValue="";
-        switch (propertyName){
-            case "name":{
-                propertyValue=name;
+
+    public String getProperty(String propertyName) {
+        String propertyValue = "";
+        switch (propertyName) {
+            case "name": {
+                propertyValue = name;
                 break;
             }
-            case "surname":{
-                propertyValue=surname;
+            case "surname": {
+                propertyValue = surname;
                 break;
             }
-            case "birthday":{
-                propertyValue=birthday.toString();
+            case "birthday": {
+                propertyValue = birthday.toString();
                 break;
             }
         }
@@ -88,36 +87,10 @@ public class User implements Comparable <User>{
     public boolean equals_search(Object o) {
         boolean retVal = false;
         if (o instanceof User) {
-            User user = new User();
+            User user;
             user = (User) o;
-            retVal = (user.name.toLowerCase().equals(this.name.toLowerCase()) || user.surname.toLowerCase().equals(this.name.toLowerCase()) || user.birthday.toString().toLowerCase().equals(this.birthday.toString().toLowerCase()) || user.address.equals_search(this.address));
+            retVal = (user.name.equalsIgnoreCase(this.name) || user.surname.equalsIgnoreCase(this.name) || user.birthday.toString().equalsIgnoreCase(this.birthday.toString()) || user.address.equals_search(this.address));
         }
         return retVal;
     }
-
-
-//    @Override
-//    public int hashCode() {
-//        int hash = 7;
-//        hash = 17 * hash + this.name.hashCode();
-//        hash = 17 * hash + this.surname.hashCode();
-//        hash = 17 * hash + this.birthday.hashCode();
-//        hash = 17 * hash + this.address.hashCode();
-//        return hash;
-//    }
-
-
-
 }
-
-
-
-//if ((user.name.contains(searchString))
-//        | (user.surname.contains(searchString))
-//        | (user.address.city.contains(searchString))
-//        | (user.address.street.contains(searchString)) |
-//        (user.address.app.toString().equals(searchString))) {
-//        System.out.println(db.indexOf(user) + " " + user.toString());
-//        }
-//        } else {
-//        if (user.birthday.equals(birthday)) System.out.println(db.indexOf(user) + " " + user.toString());

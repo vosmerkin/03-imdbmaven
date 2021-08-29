@@ -1,6 +1,10 @@
+import Imdb.Address;
+import Imdb.ImportExport;
+import Imdb.User;
+import Imdb.UsersImdb;
+
 import java.time.LocalDate;
 import java.util.Scanner;
-import Imdb.*;
 
 public class Menu {
 
@@ -75,17 +79,17 @@ public class Menu {
         switch (searchParameter) {
             case "name": {
                 String searchString = inputStr("Enter user name:");
-                imdb.searchUsersMap(imdb.dbNames,searchString);
+                imdb.searchUsersMap(imdb.dbNames, searchString);
                 break;
             }
-            case "surname":{
+            case "surname": {
                 String searchString = inputStr("Enter user surname:");
-                imdb.searchUsersMap(imdb.dbSurnames,searchString);
+                imdb.searchUsersMap(imdb.dbSurnames, searchString);
                 break;
             }
-            case "birthday":{
+            case "birthday": {
                 String searchString = inputStr("Enter user birthday (YYYY-MM-DD):");
-                imdb.searchUsersMap(imdb.dbBirthdays,searchString);
+                imdb.searchUsersMap(imdb.dbBirthdays, searchString);
                 break;
             }
         }
@@ -111,7 +115,7 @@ public class Menu {
         String userConfirmation;
         if ("_7".equals(userIndex)) this.search(imdb);
 
-        //TODO userIndex.equals("_7")
+            //TODO userIndex.equals("_7")
 
         else {
             int userIndex1 = Integer.parseInt(userIndex);
@@ -168,21 +172,19 @@ public class Menu {
         System.out.println("7 - Import from file");
         System.out.println("8 - Export to file");
         System.out.println("9 - Quit");
-        int i=scanner.nextInt();
-        String s= scanner.nextLine();
+        int i = scanner.nextInt();
+        String s = scanner.nextLine();
         return i;
     }
 
 
-    public int inputInt(String prompt, int maxVal, int minVal, int emptyInputVal){
+    public int inputInt(String prompt, int maxVal, int minVal, int emptyInputVal) {
         System.out.println(prompt);
-        String str=scanner.nextLine();
-        int returnVal=emptyInputVal;
+        String str = scanner.nextLine();
+        int returnVal = emptyInputVal;
         try {
             returnVal = Integer.parseInt(str);
-        }
-        catch (NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             System.out.println(e);
         }
         if (minVal > returnVal) {
@@ -196,28 +198,28 @@ public class Menu {
         return returnVal;
     }
 
-    public String inputStr(String prompt){
+    public String inputStr(String prompt) {
         System.out.println(prompt);
         return scanner.nextLine();
     }
 
 
-    public User inputUserData(String prompt){
+    public User inputUserData(String prompt) {
         System.out.println(prompt);
 
         String name = inputStr("Enter user name:");
-        String surname =  inputStr("Enter user surname:");
+        String surname = inputStr("Enter user surname:");
 
         System.out.println("Enter user birthdate");
-        int year = inputInt("Year (1900...2021):",2021,1900,5000);
-        int month = inputInt("Month(1...12):",12,1,1);
-        int day = inputInt("Day(1...31):",30,1,1);
+        int year = inputInt("Year (1900...2021):", 2021, 1900, 5000);
+        int month = inputInt("Month(1...12):", 12, 1, 1);
+        int day = inputInt("Day(1...31):", 30, 1, 1);
         LocalDate birthday = LocalDate.of(year, month, day);
 
         System.out.println("Enter user address");
         String city = inputStr("City:");
         String street = inputStr("Street:");
-        int app = inputInt("App:",10000000,1,1);
+        int app = inputInt("App:", 10000000, 1, 1);
         return new User(name, surname, birthday, new Address(city, street, app));
     }
 
