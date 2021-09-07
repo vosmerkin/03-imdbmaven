@@ -10,6 +10,9 @@ import java.util.Map;
 
 public class ImportExport {
 
+    final String SPLITTER = ":";
+    final String DATE_FORMAT = "yyyy-MM-dd";
+
     public List<User> importFromFile(String filename) {
         List<User> list = new ArrayList<>();
 
@@ -18,8 +21,8 @@ public class ImportExport {
         try (BufferedReader in = new BufferedReader(new FileReader(new File(filename).getAbsoluteFile()))) {
 
             while ((s = in.readLine()) != null) {
-                s1 = s.split(":");
-                list.add(new User(s1[0], s1[1], LocalDate.parse(s1[2], DateTimeFormatter.ofPattern("yyyy-MM-dd")), new Address(s1[3], s1[4], Integer.parseInt(s1[5]))));
+                s1 = s.split(SPLITTER);
+                list.add(new User(s1[0], s1[1], LocalDate.parse(s1[2], DateTimeFormatter.ofPattern(DATE_FORMAT)), new Address(s1[3], s1[4], Integer.parseInt(s1[5]))));
                 System.out.println(s);
             }
         } catch (IOException e) {

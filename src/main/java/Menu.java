@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public class Menu {
 
+    public static final String SEARCH_BY_NAME = "name";
+    public static final String SEARCH_BY_SURNAME = "surname";
+    public static final String SEARCH_BY_BIRTHDAY = "birthday";
+
     Scanner scanner = new Scanner(System.in);
 
     public void start() {
@@ -29,16 +33,16 @@ public class Menu {
                     delete(imdb);
                     break;
                 case (3): //3 - Search by name
-                    searchWithMap(imdb, "name");
+                    searchWithMap(imdb, SEARCH_BY_NAME);
 //                    this.editEntry(imdb);
                     break;
                 case (4): //4 - Search by surname
 //                    this.search(imdb);
-                    searchWithMap(imdb, "surname");
+                    searchWithMap(imdb, SEARCH_BY_SURNAME);
                     break;
 
                 case (5): //5 - Search by age
-                    searchWithMap(imdb, "birthday");
+                    searchWithMap(imdb, SEARCH_BY_BIRTHDAY);
 //                    this.searchAge(imdb);
                     break;
 
@@ -47,9 +51,9 @@ public class Menu {
                     break;
                 case (7): //7 - Import from file
                     imdb.db = io.importFromFile("./" + "imdb.txt");
-                    imdb.dbNames = io.getMapByProperty(imdb.db, "name");
-                    imdb.dbSurnames = io.getMapByProperty(imdb.db, "surname");
-                    imdb.dbBirthdays = io.getMapByProperty(imdb.db, "birthday");
+                    imdb.dbNames = io.getMapByProperty(imdb.db, User.NAME_PROPERTY);
+                    imdb.dbSurnames = io.getMapByProperty(imdb.db, User.SURNAME_PROPERTY);
+                    imdb.dbBirthdays = io.getMapByProperty(imdb.db, User.BIRTHDAY_PROPERTY);
                     break;
                 case (8): //8 - Export to file
                     io.exportToFile("./" + "imdb.txt", imdb.db);
@@ -77,17 +81,17 @@ public class Menu {
 
     private void searchWithMap(UsersImdb imdb, String searchParameter) {
         switch (searchParameter) {
-            case "name": {
+            case SEARCH_BY_NAME: {
                 String searchString = inputStr("Enter user name:");
                 imdb.searchUsersMap(imdb.dbNames, searchString);
                 break;
             }
-            case "surname": {
+            case SEARCH_BY_SURNAME: {
                 String searchString = inputStr("Enter user surname:");
                 imdb.searchUsersMap(imdb.dbSurnames, searchString);
                 break;
             }
-            case "birthday": {
+            case SEARCH_BY_BIRTHDAY: {
                 String searchString = inputStr("Enter user birthday (YYYY-MM-DD):");
                 imdb.searchUsersMap(imdb.dbBirthdays, searchString);
                 break;
@@ -110,29 +114,19 @@ public class Menu {
 //    }
 
     private void delete(UsersImdb imdb) {
-        System.out.println("Enter index of the user entry to delete, or use search to find it (type _7):");
+        System.out.println("Enter index of the user entry to delete:");
         String userIndex = scanner.next();
         String userConfirmation;
-        if ("_7".equals(userIndex)) this.search(imdb);
 
-            //TODO userIndex.equals("_7")
+        int userIndex1 = Integer.parseInt(userIndex);
+        if ((userIndex1 > 0) && (userIndex1 <= imdb.db.size())) {
+            System.out.println("Imdb.User index - " + userIndex1);
+            System.out.println(imdb.db.get(userIndex1).toString());
+            System.out.println("Remove this user? (Type 1 to confirm):");
 
-        else {
-            int userIndex1 = Integer.parseInt(userIndex);
-            if ((userIndex1 > 0) && (userIndex1 <= imdb.db.size())) {
-
-                //TODO &&
-
-                System.out.println("Imdb.User index - " + userIndex1);
-                System.out.println(imdb.db.get(userIndex1).toString());
-                System.out.println("Remove this user? (Type 1 to confirm):");
-
-                userConfirmation = scanner.next();
-                if (userConfirmation.equals("1")) imdb.delete(userIndex1);
-            }
+            userConfirmation = scanner.next();
+            if ("1".equals(userConfirmation)) imdb.delete(userIndex1);
         }
-
-
     }
 
 //    class searchUserComp implements Comparator<Imdb.User> {
@@ -153,7 +147,6 @@ public class Menu {
 
 
     public void search(UsersImdb imdb) {
-
         imdb.searchUsersStream(this.inputUserData("Enter user search parameters"));
 //
 //        System.out.println("Enter search string:");

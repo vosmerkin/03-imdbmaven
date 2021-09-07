@@ -54,21 +54,33 @@ public class User implements Comparable<User> {
         address.setApp(app);
     }
 
+    public static final  String NAME_PROPERTY= "name";
+    public final static String SURNAME_PROPERTY= "surname";
+    public final static String BIRTHDAY_PROPERTY= "birthday";
+
     public String getProperty(String propertyName) {
-        String propertyValue = "";
-        switch (propertyName) {
-            case "name": {
-                propertyValue = name;
-                break;
+        String propertyValue;
+        if (propertyName != null) {
+            switch (propertyName) {
+                case NAME_PROPERTY: {
+                    propertyValue = name;
+                    break;
+                }
+                case SURNAME_PROPERTY: {
+                    propertyValue = surname;
+                    break;
+                }
+                case BIRTHDAY_PROPERTY: {
+                    propertyValue = birthday.toString();
+                    break;
+                }
+                default: {
+                    propertyValue = "";
+                    break;
+                }
             }
-            case "surname": {
-                propertyValue = surname;
-                break;
-            }
-            case "birthday": {
-                propertyValue = birthday.toString();
-                break;
-            }
+        } else {
+            propertyValue = "";
         }
         return propertyValue;
     }
