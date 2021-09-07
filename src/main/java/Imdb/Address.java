@@ -19,6 +19,8 @@ public class Address {
         int app;
     }
 
+    //TODO what the difference between theese two constructors
+
     public String getCity() {
         return city;
     }
@@ -51,9 +53,8 @@ public class Address {
     public boolean equals_search(Object o) {
         boolean retVal = false;
         if (o instanceof Address) {
-            Address address = new Address();
-            address = (Address) o;
-            retVal = (address.city.toLowerCase().equals(this.city.toLowerCase()) && address.street.toLowerCase().equals(this.street.toLowerCase()) && address.app.equals(this.app));
+            Address address = (Address) o;
+            retVal = (address.city.equalsIgnoreCase(city) && address.street.equalsIgnoreCase(street) && address.app.equals(this.app));
         }
         return retVal;
     }

@@ -1,26 +1,35 @@
 package Imdb;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.*;
+import java.util.*;
 
 
 //TODO find more effective data structure
 //todo interface for imdb
 
 //todo package imdb
+
 //todo поиск по конкретным полям
 
 
-public class UsersImdb implements  Imdb{
+public class UsersImdb implements Imdb{
 
-    public List<User> db = new ArrayList<User>();
+    public List<User> db = new ArrayList<>();
+    public Map<String, List<User>> dbNames = new  HashMap<>();
+    public Map<String, List<User>> dbSurnames = new  HashMap<>();
+    public Map<String, List<User>> dbBirthdays = new  HashMap<>();
 
 
     public void addEntry(User user) {
         db.add(user);
+    }
+
+    public void searchUsersMap (Map<String, List<User>> dbMap, String searchString) {
+        List <User> db = dbMap.get(searchString);
+        for (User user: db) {
+            System.out.println(user);
+        }
+
     }
 
 
@@ -37,7 +46,7 @@ public class UsersImdb implements  Imdb{
     }
 
     public void searchUsers(String searchString, LocalDate birthday) {
-        //todo make search not case sensitive
+        //todo  make search not case sensitive
 
 //        int app;
 //
@@ -59,18 +68,14 @@ public class UsersImdb implements  Imdb{
                         || (user.address.city.contains(searchString))
                         || (user.address.street.contains(searchString))
                         || (user.address.app.toString().equals(searchString))) {
-                    System.out.println(db.indexOf(user) + " " + user.toString());
+                    System.out.println(db.indexOf(user) + " " + user);
                 }
             } else {
-                if (user.birthday.equals(birthday)) System.out.println(db.indexOf(user) + " " + user.toString());
+                if (user.birthday.equals(birthday)) System.out.println(db.indexOf(user) + " " + user);
             }
-
-
     }
 
     public void delete(int userIndex) {
-
         db.remove(userIndex);
-
     }
 }
