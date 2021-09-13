@@ -1,7 +1,7 @@
 public class ReqResp <T> implements Request {
     enum RequestType{
-        MENU_ITEM_1,
-        MENU_ITEM_2
+        addEntry (1,MenuActions.addEntry),
+        deleteEntry (2,MenuActions.deleteEntry)
     };
 
     @Override

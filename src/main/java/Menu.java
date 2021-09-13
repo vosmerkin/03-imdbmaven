@@ -1,7 +1,4 @@
-import Imdb.Address;
-import Imdb.ImportExport;
-import Imdb.User;
-import Imdb.UsersImdb;
+import imdb.*;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -15,7 +12,7 @@ public class Menu {
     Scanner scanner = new Scanner(System.in);
 
     public void start() {
-        UsersImdb imdb = new UsersImdb();
+        Imdb imdb = new UsersImdb();
 
         Integer menuItem;
         do {
@@ -24,25 +21,25 @@ public class Menu {
 
             switch (menuItem) {
                 case (1): //1 - Add entry
-                    addEntry(imdb);
+                    addEntry((UsersImdb) imdb);
 
                     //TODO delete this
 
                     break;
                 case (2): //2 - Delete entry
-                    delete(imdb);
+                    delete((UsersImdb) imdb);
                     break;
                 case (3): //3 - Search by name
-                    searchWithMap(imdb, SEARCH_BY_NAME);
+                    searchWithMap((UsersImdb) imdb, SEARCH_BY_NAME);
 //                    this.editEntry(imdb);
                     break;
                 case (4): //4 - Search by surname
 //                    this.search(imdb);
-                    searchWithMap(imdb, SEARCH_BY_SURNAME);
+                    searchWithMap((UsersImdb) imdb, SEARCH_BY_SURNAME);
                     break;
 
                 case (5): //5 - Search by age
-                    searchWithMap(imdb, SEARCH_BY_BIRTHDAY);
+                    searchWithMap((UsersImdb) imdb, SEARCH_BY_BIRTHDAY);
 //                    this.searchAge(imdb);
                     break;
 

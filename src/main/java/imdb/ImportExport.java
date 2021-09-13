@@ -1,4 +1,4 @@
-package Imdb;
+package imdb;
 
 import java.io.*;
 import java.time.LocalDate;

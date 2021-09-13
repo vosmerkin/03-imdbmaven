@@ -1,4 +1,4 @@
-package Imdb;
+package imdb;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -14,7 +14,7 @@ import java.util.*;
 
 public class UsersImdb implements Imdb{
 
-    public List<User> db = new ArrayList<>();
+    private List<User> db = new ArrayList<>();
     public Map<String, List<User>> dbNames = new  HashMap<>();
     public Map<String, List<User>> dbSurnames = new  HashMap<>();
     public Map<String, List<User>> dbBirthdays = new  HashMap<>();

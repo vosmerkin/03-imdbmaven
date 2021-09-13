@@ -1,4 +1,4 @@
-package Imdb;
+package imdb;
 
 
 public class Address {
