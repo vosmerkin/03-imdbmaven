@@ -2,8 +2,8 @@ package menu;
 
 public interface Request <T>{
  //   enum RequestType{};  // типом запросов
-    Enum getRequestType(String requestTypeString);
+//    Enum getRequestType(String requestTypeString);
 
-    T getRequestData(Enum request);
+    T getRequestData();
 
 }

@@ -1,3 +1,5 @@
+import menu.EnumMenu;
+
 public class ImdbApp {
 
 
@@ -8,8 +10,10 @@ public class ImdbApp {
 
 
         //вызываем меню
-        Menu menu = new Menu();
-        menu.start();
+//        Menu menu = new Menu();
+//        menu.start();
+
+//        EnumMenu menu = new EnumMenu();
 
 
     }
