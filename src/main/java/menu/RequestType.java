@@ -2,6 +2,7 @@ package menu;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public enum RequestType {
     CHOOSE_MENU_ITEM,
@@ -22,6 +23,26 @@ public enum RequestType {
             result = MAPPING.get(name.toUpperCase());
         }
         return result;
+    }
+
+    public Object getRequestData() {
+        Scanner  scanner = new Scanner(System.in);
+        Object returnValue=null;
+        switch (this.name()) {
+            case ("CHOOSE_MENU_ITEM"):{
+
+                returnValue= (Integer) scanner.nextInt();
+                break;
+            }
+            case ("INPUT_DATA"):{
+                //surname
+                returnValue= (String) scanner.nextLine();
+                break;
+            }
+
+        }
+
+        return returnValue;
     }
 
 

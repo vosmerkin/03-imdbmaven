@@ -1,8 +1,11 @@
 package menu;
 
-public class Rqst implements Request <RequestType> {
+public class Rqst <RequestType> implements Request  {
+
+
+
     @Override
-    public RequestType getRequestData() {
+    public Object getRequestData(menu.RequestType rType) {
         return null;
     }
 }
