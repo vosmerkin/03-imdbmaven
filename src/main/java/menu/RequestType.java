@@ -26,17 +26,23 @@ public enum RequestType {
     }
 
     public Object getRequestData() {
-        Scanner  scanner = new Scanner(System.in);
-        Object returnValue=null;
+        Scanner scanner = new Scanner(System.in);
+        Object returnValue = null;
         switch (this.name()) {
-            case ("CHOOSE_MENU_ITEM"):{
+            case ("CHOOSE_MENU_ITEM"): {
+                int userInput = scanner.nextInt();
+                for (EnumMenu menuItem : EnumMenu.values()) {
+                    if (userInput > 0 && menuItem.getValue() == userInput){
+                        returnValue = (EnumMenu) menuItem;
+                        break;
+                    }
+                }
 
-                returnValue= (Integer) scanner.nextInt();
                 break;
             }
-            case ("INPUT_DATA"):{
+            case ("INPUT_DATA"): {
                 //surname
-                returnValue= (String) scanner.nextLine();
+                returnValue = (String) scanner.nextLine();
                 break;
             }
 
@@ -44,7 +50,6 @@ public enum RequestType {
 
         return returnValue;
     }
-
 
 
 }

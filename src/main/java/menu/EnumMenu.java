@@ -23,11 +23,18 @@ package menu;
         this.menuName = menuName;
     }
 
+    public int getValue(){
+        return this.value;
+    }
+
     public static void showMenu(){
         System.out.println("Main menu");
         for (EnumMenu menuItem: EnumMenu.values()) {
             System.out.println(menuItem.menuName);
         }
+
+    }
+    public void executeMenuAction(){
 
     }
 }
