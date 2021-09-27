@@ -4,22 +4,22 @@ public class Menu2 {
 
 
     public void startMenu() {
-        EnumMenu userChoice = EnumMenu.UNKNOWN;
-        Request rqst = new RequestMenu();
+        MenuItems userChoice = MenuItems.UNKNOWN;
+        Request rqst = new RequestMenu(RequestType.CHOOSE_MENU_ITEM);
 
         do {
-            EnumMenu.showMenu();
+            MenuItems.showMenu();
 
-            userChoice = (EnumMenu) rqst.getRequestType(RequestType.CHOOSE_MENU_ITEM).getRequestData();
-            userChoice = rqst.getRequestData2(RequestType.CHOOSE_MENU_ITEM);
 
+//            userChoice = (MenuItems) rqst.getRequestType(RequestType.CHOOSE_MENU_ITEM).getRequestData();
             //тут без (EnumMenu) пишет, что getRequestData() возвращает Object
 
 
+//            userChoice = rqst.getRequestData2(RequestType.CHOOSE_MENU_ITEM);
             MenuActions.runMenuActions(userChoice);
 
 
-        } while (userChoice != EnumMenu.QUIT_9);
+        } while (userChoice != MenuItems.QUIT_9);
 
     }
 

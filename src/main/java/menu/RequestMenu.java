@@ -4,31 +4,21 @@ package menu;
 public class RequestMenu <EnumMenu> implements Request {
 
     private RequestType rType;
+    private MenuItems menuItem;
 
-    @Override
-    public RequestMenu getRequestType(menu.RequestType rType) {
+    public RequestMenu(RequestType rType) {
         this.rType = rType;
-        return this;
+    }
+
+
+    @Override
+    public RequestType getRequestType() {
+        return rType;
     }
 
     @Override
-    public menu.EnumMenu getRequestData() {
-        if (RequestType.CHOOSE_MENU_ITEM.equals(this.rType)) {
-            //scanner
-            //запрашиваем выбор пользователя
-            //возвращаем EnumMenu.выбранный пункт меню
-        }
-
-        return menu.EnumMenu.UNKNOWN;
+    public MenuItems getRequestData() {
+        return menuItem;
     }
 
-
-    public EnumMenu getRequestData2(menu.RequestType rType) {
-        if (RequestType.CHOOSE_MENU_ITEM.equals(this.rType)) {
-            //scanner
-            //запрашиваем выбор пользователя
-            //возвращаем EnumMenu.выбранный пункт меню
-        }
-        return (EnumMenu) menu.EnumMenu.UNKNOWN;
-    }
 }

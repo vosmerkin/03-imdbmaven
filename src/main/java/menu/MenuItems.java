@@ -1,6 +1,6 @@
 package menu;
 
- public  enum EnumMenu {
+ public  enum MenuItems {   //MenuItems
     ADD_ENTRY_1 (1, "Add entry"),
     DELETE_ENTRY_2 (2, "Delete entry"),
     //        SEARCH_BY_NAME_3,
@@ -18,7 +18,7 @@ package menu;
     private int value;
     private String menuName;
 
-    EnumMenu(int value, String menuName) {
+    MenuItems(int value, String menuName) {
         this.value = value;
         this.menuName = menuName;
     }
@@ -29,7 +29,7 @@ package menu;
 
     public static void showMenu(){
         System.out.println("Main menu");
-        for (EnumMenu menuItem: EnumMenu.values()) {
+        for (MenuItems menuItem: MenuItems.values()) {
             System.out.println(menuItem.menuName);
         }
 
