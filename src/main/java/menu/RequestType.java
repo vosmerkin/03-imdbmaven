@@ -25,31 +25,40 @@ public enum RequestType {
         return result;
     }
 
-    public Object getRequestData() {
-        Scanner scanner = new Scanner(System.in);
-        Object returnValue = null;
-        switch (this.name()) {
-            case ("CHOOSE_MENU_ITEM"): {
-                int userInput = scanner.nextInt();
-                for (EnumMenu menuItem : EnumMenu.values()) {
-                    if (userInput > 0 && menuItem.getValue() == userInput){
-                        returnValue = (EnumMenu) menuItem;
-                        break;
-                    }
-                }
 
-                break;
-            }
-            case ("INPUT_DATA"): {
-                //surname
-                returnValue = (String) scanner.nextLine();
-                break;
-            }
 
-        }
-
-        return returnValue;
-    }
+//    public Object getRequestData(RequestType rType) {
+//        Scanner scanner = new Scanner(System.in);
+//        Object returnValue = null;
+//
+//        switch (rType) {
+//            case CHOOSE_MENU_ITEM: {
+//
+//            }
+//        }
+//
+//        switch (this.name()) {
+//            case ("CHOOSE_MENU_ITEM"): {
+//                int userInput = scanner.nextInt();
+//                for (EnumMenu menuItem : EnumMenu.values()) {
+//                    if (userInput > 0 && menuItem.getValue() == userInput){
+//                        returnValue = (EnumMenu) menuItem;
+//                        break;
+//                    }
+//                }
+//
+//                break;
+//            }
+//            case ("INPUT_DATA"): {
+//                //surname
+//                returnValue = (String) scanner.nextLine();
+//                break;
+//            }
+//
+//        }
+//
+//        return returnValue;
+//    }
 
 
 }

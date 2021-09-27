@@ -5,10 +5,16 @@ public class Menu2 {
 
     public void startMenu() {
         EnumMenu userChoice = EnumMenu.UNKNOWN;
+        Request rqst = new RequestMenu();
+
         do {
             EnumMenu.showMenu();
 
-            userChoice = (EnumMenu) RequestType.getMethodByName("CHOOSE_MENU_ITEM").getRequestData();
+            userChoice = (EnumMenu) rqst.getRequestType(RequestType.CHOOSE_MENU_ITEM).getRequestData();
+            userChoice = rqst.getRequestData2(RequestType.CHOOSE_MENU_ITEM);
+
+            //тут без (EnumMenu) пишет, что getRequestData() возвращает Object
+
 
             MenuActions.runMenuActions(userChoice);
 

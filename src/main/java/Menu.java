@@ -82,7 +82,7 @@ public class Menu {
                 String searchString = inputStr("Enter user name:");
                 imdb.searchUsersMap(imdb.dbNames, searchString);
 
-                searchString.compareTo()
+                searchString.compareTo();
                 break;
             }
             case SEARCH_BY_SURNAME: {
