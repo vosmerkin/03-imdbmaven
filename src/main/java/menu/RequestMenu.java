@@ -1,7 +1,7 @@
 package menu;
 
 
-public class RequestMenu <EnumMenu> implements Request {
+public class RequestMenu<MenuItems> implements Request<MenuItems> {
 
     private RequestType rType;
     private MenuItems menuItem;
@@ -20,5 +20,11 @@ public class RequestMenu <EnumMenu> implements Request {
     public MenuItems getRequestData() {
         return menuItem;
     }
+
+    @Override
+    public void setRequestData(MenuItems data) {
+        menuItem = data;
+    }
+
 
 }

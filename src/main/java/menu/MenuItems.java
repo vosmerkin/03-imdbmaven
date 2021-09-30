@@ -15,12 +15,23 @@ package menu;
 
     static {}
 
+
     private int value;
     private String menuName;
 
     MenuItems(int value, String menuName) {
         this.value = value;
         this.menuName = menuName;
+    }
+
+    public static MenuItems getMenuByValue(int value){
+        MenuItems returnValue = MenuItems.UNKNOWN;
+        for (MenuItems item:values()){
+            if (item.getValue()==value){
+                returnValue=item;
+            }
+        }
+        return returnValue;
     }
 
     public int getValue(){
