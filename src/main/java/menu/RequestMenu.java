@@ -1,7 +1,7 @@
 package menu;
 
 
-public class RequestMenu<MenuItems> implements Request<MenuItems> {
+public class RequestMenu implements Request<MenuItems> {
 
     private RequestType rType;
     private MenuItems menuItem;

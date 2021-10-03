@@ -14,10 +14,10 @@ import java.util.*;
 
 public class UsersImdb implements Imdb{
 
-    private List<User> db = new ArrayList<>();
-    public Map<String, List<User>> dbNames = new  HashMap<>();
-    public Map<String, List<User>> dbSurnames = new  HashMap<>();
-    public Map<String, List<User>> dbBirthdays = new  HashMap<>();
+    private static List<User> db = new ArrayList<>();
+    private static Map<String, List<User>> dbNames = new  HashMap<>();
+    private static Map<String, List<User>> dbSurnames = new  HashMap<>();
+    private static Map<String, List<User>> dbBirthdays = new  HashMap<>();
 
 
     public void addEntry(User user) {
