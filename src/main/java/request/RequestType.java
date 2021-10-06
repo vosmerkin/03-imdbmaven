@@ -1,12 +1,14 @@
-package menu;
+package request;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public enum RequestType {
     CHOOSE_MENU_ITEM,
-    INPUT_DATA,
+    INPUT_USER_NAME,
+    INPUT_USER_SURNAME,
+    INPUT_USER_BIRTHDAY,
+    INPUT_USER_ADDRESS,
     UNKNOWN;
 
     private static final Map<String, RequestType> MAPPING = new HashMap<>();
@@ -24,7 +26,6 @@ public enum RequestType {
         }
         return result;
     }
-
 
 
 //    public Object getRequestData(RequestType rType) {

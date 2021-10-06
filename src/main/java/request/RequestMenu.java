@@ -1,5 +1,7 @@
-package menu;
+package request;
 
+
+import menu.MenuItems;
 
 public class RequestMenu implements Request<MenuItems> {
 

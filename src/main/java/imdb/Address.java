@@ -7,19 +7,13 @@ public class Address {
     String street;
     Integer app;
 
-    public Address(String city, String street, int app) {
+
+
+    public Address(String city, String street, Integer app) {
         this.city = city;
         this.street = street;
         this.app = app;
     }
-
-    public Address() {
-        String city;
-        String street;
-        int app;
-    }
-
-    //TODO what the difference between theese two constructors
 
     public String getCity() {
         return city;

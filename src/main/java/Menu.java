@@ -44,16 +44,16 @@ public class Menu {
                     break;
 
                 case (6): //6 - Show db on the screen
-                    io.showOnScreen(imdb.db);
+//                    io.showOnScreen(imdb.db);
                     break;
                 case (7): //7 - Import from file
-                    imdb.db = io.importFromFile("./" + "imdb.txt");
-                    imdb.dbNames = io.getMapByProperty(imdb.db, User.NAME_PROPERTY);
-                    imdb.dbSurnames = io.getMapByProperty(imdb.db, User.SURNAME_PROPERTY);
-                    imdb.dbBirthdays = io.getMapByProperty(imdb.db, User.BIRTHDAY_PROPERTY);
+//                    imdb.db = io.importFromFile("./" + "imdb.txt");
+//                    imdb.dbNames = io.getMapByProperty(imdb.db, User.NAME_PROPERTY);
+//                    imdb.dbSurnames = io.getMapByProperty(imdb.db, User.SURNAME_PROPERTY);
+//                    imdb.dbBirthdays = io.getMapByProperty(imdb.db, User.BIRTHDAY_PROPERTY);
                     break;
                 case (8): //8 - Export to file
-                    io.exportToFile("./" + "imdb.txt", imdb.db);
+//                    io.exportToFile("./" + "imdb.txt", imdb.db);
                     break;
                 case (9): //9 - Quit
 
@@ -80,19 +80,19 @@ public class Menu {
         switch (searchParameter) {
             case SEARCH_BY_NAME: {
                 String searchString = inputStr("Enter user name:");
-                imdb.searchUsersMap(imdb.dbNames, searchString);
+//                imdb.searchUsersMap(imdb.dbNames, searchString);
 
-                searchString.compareTo();
+//                searchString.compareTo();
                 break;
             }
             case SEARCH_BY_SURNAME: {
                 String searchString = inputStr("Enter user surname:");
-                imdb.searchUsersMap(imdb.dbSurnames, searchString);
+//                imdb.searchUsersMap(imdb.dbSurnames, searchString);
                 break;
             }
             case SEARCH_BY_BIRTHDAY: {
                 String searchString = inputStr("Enter user birthday (YYYY-MM-DD):");
-                imdb.searchUsersMap(imdb.dbBirthdays, searchString);
+//                imdb.searchUsersMap(imdb.dbBirthdays, searchString);
                 break;
             }
         }
@@ -118,15 +118,15 @@ public class Menu {
         String userConfirmation;
 
         int userIndex1 = Integer.parseInt(userIndex);
-        if ((userIndex1 > 0) && (userIndex1 <= imdb.db.size())) {
+//        if ((userIndex1 > 0) && (userIndex1 <= imdb.db.size())) {
             System.out.println("Imdb.User index - " + userIndex1);
-            System.out.println(imdb.db.get(userIndex1).toString());
+//            System.out.println(imdb.db.get(userIndex1).toString());
             System.out.println("Remove this user? (Type 1 to confirm):");
 
             userConfirmation = scanner.next();
             if ("1".equals(userConfirmation)) imdb.delete(userIndex1);
         }
-    }
+
 
 //    class searchUserComp implements Comparator<Imdb.User> {
 //        @Override public int compare(Imdb.User s1, Imdb.User s2)

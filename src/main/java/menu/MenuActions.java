@@ -1,7 +1,9 @@
 package menu;
 
-import imdb.Imdb;
-import imdb.UsersImdb;
+import imdb.*;
+import request.*;
+
+import java.time.LocalDate;
 
 public class MenuActions {
 
@@ -44,7 +46,19 @@ public class MenuActions {
     }
 
     public static void addEntry() {
-         Imdb db = new UsersImdb();
+        Imdb db = new UsersImdb();
+        Request<String> requestName = new RequestName(RequestType.INPUT_USER_NAME);
+        Request<String> requestSurname = new RequestSurname(RequestType.INPUT_USER_SURNAME);
+        Request<LocalDate> requestBirthday = new RequestDate(RequestType.INPUT_USER_BIRTHDAY);
+        Request<Address> requestAddress = new RequestAddress(RequestType.INPUT_USER_ADDRESS);
+
+        RequestExecute.execute(requestName);
+        RequestExecute.execute(requestSurname);
+        RequestExecute.execute(requestBirthday);
+        RequestExecute.execute(requestAddress);
+
+        db.addEntry(new User(requestName.getRequestData(), requestSurname.getRequestData(), requestBirthday.getRequestData(), requestAddress.getRequestData()));
+
 
     }
 
@@ -52,18 +66,39 @@ public class MenuActions {
     }
 
     private static void searchByName() {
+        Imdb db = new UsersImdb();
+        Request<String> requestName = new RequestSurname(RequestType.INPUT_USER_NAME);
+        RequestExecute.execute(requestName);
+        db.searchNameMap(requestName.getRequestData());
+
+
     }
 
     private static void searchBySurname() {
+        Imdb db = new UsersImdb();
+        Request<String> requestSurname = new RequestSurname(RequestType.INPUT_USER_SURNAME);
+        RequestExecute.execute(requestSurname);
+        db.searchSurnameMap(requestSurname.getRequestData());
     }
 
     private static void searchByAge() {
+        Imdb db = new UsersImdb();
+        Request<LocalDate> requestBirthday = new RequestDate(RequestType.INPUT_USER_BIRTHDAY);
+        RequestExecute.execute(requestBirthday);
+        db.searchBirthdaysMap(requestBirthday.getRequestData().toString());
     }
+
 
     private static void showDbOnScreen() {
     }
 
     private static void importFromFile() {
+        ImportExport io = new ImportExport();
+        Imdb db = new UsersImdb();
+        db.setDb(io.importFromFile("./" + "imdb.txt"));
+//        db.setDbNames (io.getMapByProperty(imdb.db, User.NAME_PROPERTY));
+//        db.setDbSurnames  (io.getMapByProperty(imdb.db, User.SURNAME_PROPERTY));
+//        db.setDbBirthdays  (io.getMapByProperty(imdb.db, User.BIRTHDAY_PROPERTY));
     }
 
     private static void exportToFile() {

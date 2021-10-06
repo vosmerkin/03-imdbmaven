@@ -17,9 +17,6 @@ public class User implements Comparable<User> {
         this.address = address;
     }
 
-    public User() {
-    }
-
     public String getName() {
         return name;
     }
@@ -54,9 +51,9 @@ public class User implements Comparable<User> {
         address.setApp(app);
     }
 
-    public static final  String NAME_PROPERTY= "name";
-    public final static String SURNAME_PROPERTY= "surname";
-    public final static String BIRTHDAY_PROPERTY= "birthday";
+    public static final String NAME_PROPERTY = "name";
+    public final static String SURNAME_PROPERTY = "surname";
+    public final static String BIRTHDAY_PROPERTY = "birthday";
 
     public String getProperty(String propertyName) {
         String propertyValue;
